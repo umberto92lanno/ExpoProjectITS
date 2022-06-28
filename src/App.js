@@ -1,5 +1,5 @@
 import {StyleSheet, View, Text, Button, TextInput} from 'react-native';
-import divide, { sum } from './CustomFunctions';
+import divide, { sum } from './utils/CustomFunctions';
 // https://snack.expo.dev/
 export default function App() {
   // JSX
