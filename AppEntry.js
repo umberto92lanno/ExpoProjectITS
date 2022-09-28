@@ -1,5 +1,5 @@
 import registerRootComponent from 'expo/build/launch/registerRootComponent';
 
-import App from './AppFC';
+import App from './AppTimer';
 
 registerRootComponent(App);

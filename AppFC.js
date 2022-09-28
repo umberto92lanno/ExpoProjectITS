@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {View, Text, TextInput, Button} from "react-native";
 
 // const obj = {
@@ -11,13 +11,16 @@ import {View, Text, TextInput, Button} from "react-native";
 // const { chiave2, chiave1 } = obj;
 // const [,,a] = array;
 
+// Arrow Function -> Function Component
 const AppFC = () => {
+    // Hooks
     const [key, setKey] = useState(1);
     const [array, setArray] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [secureText, setSecureText] = useState(true);
 
+    const input = React.useRef(null);
     const interval = React.useRef(null);
 
     // did mount
@@ -27,6 +30,7 @@ const AppFC = () => {
         setArray([1,2,3]);
         setKey(key => key + 1);
         // setArray([...array, 4]);
+        input.current.focus();
     }, []);
 
     useEffect(() => {
@@ -38,12 +42,15 @@ const AppFC = () => {
         if (username.toLowerCase() !== 'user' || password.toLowerCase() !== 'user') {
             return;
         }
-        console.warn('password corretta');
     }, [username, password]);
 
-    const onPressShowPassword = () => {
+    const onPressShowPassword = useCallback(() => {
         setSecureText(!secureText);
-    }
+    }, [secureText]);
+
+    const isCredentialsCorrect = useMemo(() => {
+        return !(username.toLowerCase() !== 'user' || password.toLowerCase() !== 'user');
+    }, [username, password]);
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', padding: 16 }}>
@@ -54,6 +61,7 @@ const AppFC = () => {
                 onChangeText={setUsername}
             />
             <TextInput
+                ref={input}
                 style={{ fontSize: 16, borderWidth: 1, padding: 16, borderRadius: 25 }}
                 value={password}
                 secureTextEntry={secureText}
