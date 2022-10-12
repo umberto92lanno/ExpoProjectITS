@@ -17,7 +17,7 @@ const ChuckJoke = ({route}) => {
     };
     getJoke();
   }, [route.params]);
-  console.log(joke);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{joke.value}</Text>

@@ -6,6 +6,7 @@ import {TimerStack} from './TimerStack';
 import AppTimer from '../../AppTimer';
 import ChuckCategories from "../screens/ChuckCategories";
 import { ChuckStack } from "./ChuckStack";
+import {ChuckModalStack} from "./ChuckModalStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +46,7 @@ export const BottomStack = () => {
           // ),
         }}
         name="Chuck"
-        component={ChuckStack}
+        component={ChuckModalStack}
       />
     </Tab.Navigator>
   );

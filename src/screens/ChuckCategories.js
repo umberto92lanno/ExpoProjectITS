@@ -1,40 +1,60 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {FlatList, Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View, StyleSheet, Button, Dimensions} from 'react-native';
 import {useCallback, useEffect, useState} from 'react';
+import Animated, {FadeInLeft, FadeInRight, FadeOutLeft, withTiming} from 'react-native-reanimated';
+import {rowLayoutAnimation} from "../animations/entering/rowLayoutAnimations";
+import {rowLayoutExitingAnimation} from "../animations/exiting/rowLayoutAnimations";
+
+const getCategories = async () => {
+  const response = await fetch(
+      'https://api.chucknorris.io/jokes/categories',
+  );
+  return await response.json();
+};
 
 const ChuckCategories = ({navigation}) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const getCategories = async () => {
-      const response = await fetch(
-        'https://api.chucknorris.io/jokes/categories',
-      );
-      const result = await response.json();
-      setCategories(result);
-    };
-    getCategories();
+    getCategories().then(setCategories);
   }, []);
 
-  const renderItem = useCallback(({item}) => {
+  const renderItem = useCallback(({item, index}) => {
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate('ChuckJoke', {category: item})}>
-        <View style={styles.containerRow}>
+        <Animated.View
+            entering={rowLayoutAnimation}
+            exiting={rowLayoutExitingAnimation}
+            style={styles.containerRow}
+        >
           <Text style={styles.rowText}>{item}</Text>
-        </View>
+        </Animated.View>
       </TouchableOpacity>
     );
   }, []);
 
+  // useEffect(() => {
+  //   console.warn(categories)
+  // }, [categories]);
+
+  const deleteFirstRow = useCallback(() => {
+    const [...newCategories] = categories;
+    newCategories.pop();
+    setCategories(newCategories);
+  }, [categories]);
+
+  const ItemSeparatorComponent = useCallback(() => <View style={styles.separator} />, [])
   return (
     <View style={styles.container}>
       <SafeAreaView />
-      <FlatList
+      <Button title="View Chuck Norris" onPress={() => navigation.navigate('ChuckFace')} />
+      <Button title="Delete first row" onPress={deleteFirstRow} />
+      <Animated.FlatList
         data={categories}
         renderItem={renderItem}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        ItemSeparatorComponent={ItemSeparatorComponent}
         contentContainerStyle={styles.flatList}
       />
     </View>
