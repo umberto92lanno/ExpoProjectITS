@@ -1,0 +1,67 @@
+export const weathers = [
+    {
+        name: 'Milano',
+        id: 0,
+        temperature: 14,
+        day: 'Mon',
+        wind: 'E 1.6mph',
+        quality: '26 Good',
+        details: {
+          temperature: 18,
+          type: 'rainy',
+          humidity: '50%',
+        },
+    },
+    {
+        name: 'Torino',
+        id: 1,
+        temperature: 20,
+        day: 'Tue',
+        wind: 'E 2.4mph',
+        quality: '10 Bad',
+        details: {
+          temperature: 18,
+          type: 'rainy',
+          humidity: '50%',
+        },
+    },
+    {
+        name: 'Toronto',
+        id: 2,
+        temperature: 10,
+        day: 'Mon',
+        wind: 'W 5.5mph',
+        quality: '13 Good',
+        details: {
+          temperature: 18,
+          type: 'rainy',
+          humidity: '50%',
+        },
+    },
+    {
+        name: 'New York',
+        id: 3,
+        temperature: 1,
+        day: 'Wed',
+        wind: 'E 100mph',
+        quality: '26 Wow',
+        details: {
+          temperature: 18,
+          type: 'rainy',
+          humidity: '50%',
+        },
+    },
+    {
+        name: 'Taranto',
+        id: 4,
+        temperature: 100,
+        day: 'Fri',
+        wind: 'N 1.1ph',
+        quality: '50 Excellent',
+        details: {
+          temperature: 18,
+          type: 'rainy',
+          humidity: '50%',
+        },
+    },
+];
