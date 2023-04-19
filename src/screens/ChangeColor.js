@@ -6,8 +6,7 @@ const numbers = [1,2];
 //DESTRUCTURING
 const [numberOne, numberTwo] = numbers;
 
-const App = () => {
-  const [playerTimer, setPlayerTimer] = useState(15);
+const ChangeColor = () => {
   const [isPlayerTurn, setIsPlayerTurn] = useState(false);
   const onPlayerPress = () => {
     setIsPlayerTurn(false);
@@ -18,20 +17,16 @@ const App = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <TouchableWithoutFeedback onPress={onPlayerPress}>
-        <View style={[styles.playerContainer, { backgroundColor: isPlayerTurn ? 'black' : 'grey' }]}>
-          <Text style={styles.playerTimer}>{playerTimer}</Text>
-        </View>
+        <View style={[styles.playerContainer, { backgroundColor: isPlayerTurn ? 'red' : 'yellow' }]} />
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback onPress={onEnemyPress}>
-        <View style={[styles.enemyContainer, { backgroundColor: isPlayerTurn ? 'grey' : 'black' }]}>
-          <Text style={styles.enemyTimer}>15:00:00</Text>
-        </View>
+        <View style={[styles.enemyContainer, { backgroundColor: isPlayerTurn ? 'yellow' : 'red' }]} />
       </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 };
 
-export default App;
+export default ChangeColor;
 
 const styles = StyleSheet.create({
   flex: {

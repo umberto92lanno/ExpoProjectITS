@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, TextInput, TouchableOpacity, View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { Button, TextInput, TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import {SafeAreaView} from "react-native-safe-area-context";
 
-const App = () => {
+const App = ({ navigation }) => {
   const [isValid, setIsValid] = useState(false);
   const [username, setUsername] = useState('');
   const onChangeUsername = (text) => {
@@ -12,10 +13,8 @@ const App = () => {
     setPassword(text);
   }
   const onLogin = () => {
-    if (username.toLowerCase() === 'prova@gmail.com' && password === 'prova') {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
+    if (username.toLowerCase() === 'prova' && password === 'prova') {
+     navigation.navigate('Details', { name: 'Mario', lastName: 'Rossi' });
     }
   }
   return (
@@ -34,7 +33,6 @@ const App = () => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Text style={{ marginBottom: 16 }}>{isValid ? 'Corretto' : 'Errore' }</Text>
         <TouchableOpacity onPress={onLogin}>
           <View style={styles.button}>
             <Text style={styles.textButton}>Login</Text>

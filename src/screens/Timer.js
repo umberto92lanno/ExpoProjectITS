@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
-import Timer from './components/Timer';
-import TimerButton from './components/TimerButton';
-import TimerCounter from './components/TimerCounter';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import Timer from '../components/Timer';
+import TimerButton from '../components/TimerButton';
+import TimerCounter from '../components/TimerCounter';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 let interval;
 const INITIAL_TIMER_VALUE = 15*60;
