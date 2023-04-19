@@ -6,20 +6,22 @@ import Login from "./src/screens/Login";
 import Timer from "./src/screens/Timer";
 import ChangeColor from "./src/screens/ChangeColor";
 import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
-
+import { Provider as PaperProvider } from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Timer" component={Timer} />
-        <Stack.Screen name="ChangeColor" component={ChangeColor} />
-        <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Timer" component={Timer} />
+          <Stack.Screen name="ChangeColor" component={ChangeColor} />
+          <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
 
