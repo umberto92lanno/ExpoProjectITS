@@ -32,7 +32,7 @@ npm install @react-navigation/native-stack
 ```
 ##### YARN
 ```
-yarn add @react-navigation/native-stack
+yarn add @react-navigation/native-stack 
 ```
 ##### Implementazione
 ```

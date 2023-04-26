@@ -15,4 +15,8 @@ export const features = [
     name: 'Tab Navigation example',
     screenName: 'BottomTabNavigation',
   },
+  {
+    name: 'List network API',
+    screenName: 'List',
+  },
 ]

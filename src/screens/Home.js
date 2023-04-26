@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {features} from "../implementations/features";
 import {TouchableOpacity, Text, ScrollView, StyleSheet} from "react-native";

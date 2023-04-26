@@ -6,7 +6,8 @@ import Login from "./src/screens/Login";
 import Timer from "./src/screens/Timer";
 import ChangeColor from "./src/screens/ChangeColor";
 import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
-import { Provider as PaperProvider } from 'react-native-paper';
+import List from './src/screens/List';
+import {Provider as PaperProvider} from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Stack.Screen name="Timer" component={Timer} />
           <Stack.Screen name="ChangeColor" component={ChangeColor} />
           <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
+          <Stack.Screen name="List" component={List} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
