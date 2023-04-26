@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, TextInput, TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 
-const App = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [isValid, setIsValid] = useState(false);
   const [username, setUsername] = useState('');
   const onChangeUsername = (text) => {
@@ -42,7 +42,8 @@ const App = ({ navigation }) => {
     </SafeAreaView>
   );
 }
-export default App;
+export default Login;
+
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
