@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView, Text, View} from "react-native";
+import React, {useEffect, useMemo, useState} from 'react';
+import {FlatList, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {getCharacters} from "../api/api";
 import {SafeAreaView} from "react-native-safe-area-context";
 
@@ -9,17 +9,27 @@ const List = ({ navigation }) => {
     getCharacters().then(response => setList(response));
   }, []);
 
+  useEffect(() => {
+    console.log(list);
+  }, [list]);
+
   const renderItem = ({ item }) => {
     return (
-      <View style={{ height: 70 }}>
-        <Text>{item.name}</Text>
-      </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Details', { image: item.image, name: item.name })}>
+        <View style={{ height: 70 }}>
+          <Text>{item.name}</Text>
+        </View>
+      </TouchableOpacity>
     );
   }
 
   const keyExtractor = (item, index) => {
     return item.id;
   }
+
+  const listFiltered = useMemo(() => {
+    return list.filter(l => l.name === "Rick Sanchez");
+  }, [list]);
 
   return (
     <SafeAreaView>
@@ -34,7 +44,7 @@ const List = ({ navigation }) => {
       {/*  })}*/}
       {/*</ScrollView>*/}
       <FlatList
-        data={list}
+        data={listFiltered}
         renderItem={renderItem}
         // keyExtractor: da utilizzare solo se nel record dell'array non è presente la chiave "id"
         // keyExtractor={keyExtractor}

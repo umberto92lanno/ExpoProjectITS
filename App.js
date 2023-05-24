@@ -8,22 +8,23 @@ import ChangeColor from "./src/screens/ChangeColor";
 import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
 import List from './src/screens/List';
 import {Provider as PaperProvider} from 'react-native-paper';
+import Details from "./src/screens/Details";
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <PaperProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Timer" component={Timer} />
-          <Stack.Screen name="ChangeColor" component={ChangeColor} />
-          <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
-          <Stack.Screen name="List" component={List} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Timer" component={Timer} />
+        <Stack.Screen name="ChangeColor" component={ChangeColor} />
+        <Stack.Screen name="BottomTabNavigation" component={BottomTabNavigation} />
+        <Stack.Screen name="List" component={List} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
